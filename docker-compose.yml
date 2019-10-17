@@ -1,9 +1,26 @@
 version: "3"
 services:
   postgres:
-    image: "postgres:11"
-    container_name: "wheelhouse_library_postgres"
+    image: postgres:11
     ports:
-      - "54320:5432"
+      - 54320:5432
     volumes:
       - ./data:/var/lib/postgresql/data
+  api:
+    image: node:11
+    volumes:
+     - ./api:/usr/src/service
+    working_dir: /usr/src/service
+    command: bash -c "npm install && npm run watch"
+    network_mode: host
+    depends_on:
+      - postgres
+  app:
+    image: node:11
+    volumes:
+     - ./app:/usr/src/service
+    working_dir: /usr/src/service
+    command: bash -c "npm install && npm run start"
+    network_mode: host
+    depends_on:
+      - api
