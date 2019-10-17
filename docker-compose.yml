@@ -1,0 +1,9 @@
+version: "3"
+services:
+  postgres:
+    image: "postgres:11"
+    container_name: "wheelhouse_library_postgres"
+    ports:
+      - "54320:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
