@@ -12,15 +12,17 @@ services:
      - ./api:/usr/src/service
     working_dir: /usr/src/service
     command: bash -c "npm install && npm run watch"
-    network_mode: host
     depends_on:
       - postgres
+    ports:
+      - 3000:3000
   app:
     image: node:11
     volumes:
      - ./app:/usr/src/service
     working_dir: /usr/src/service
     command: bash -c "npm install && npm run start"
-    network_mode: host
     depends_on:
       - api
+    ports:
+      - 1234:1234
