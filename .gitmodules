@@ -2,7 +2,9 @@
 	path = api
 	url = git@github.com:rightinyourwheelhouse/wheelhouse-library-api.git
 	branch = master
+	update = merge
 [submodule "app"]
 	path = app
 	url = git@github.com:rightinyourwheelhouse/wheelhouse-library-app.git
 	branch = master
+	update = merge
