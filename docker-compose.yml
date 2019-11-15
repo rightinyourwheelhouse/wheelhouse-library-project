@@ -21,7 +21,7 @@ services:
       - SLACK_OAUTH_TOKEN
       - SLACK_CLIENT_ID
       - SLACK_CLIENT_SECRET
-      - SLACK_CALLBACK_URL=http://localhost:1234/overview
+      - SLACK_CALLBACK_URL=http://localhost:1234/login
       - DEBUG=true
   app:
     image: node:11
