@@ -22,6 +22,8 @@ services:
       - SLACK_CLIENT_ID
       - SLACK_CLIENT_SECRET
       - SLACK_CALLBACK_URL=http://localhost:1234/login
+      - DATABASE_URL=postgresql://postgres@postgres:5432/postgres
+      - DATABASE_NO_SSL=true
       - DEBUG=true
   app:
     image: node:11
@@ -32,4 +34,6 @@ services:
     depends_on:
       - api
     ports:
-      - 1234:1234
+      - 1234:3000
+    environment:
+      - REACT_APP_API_BASE_URL=http://localhost:3000
