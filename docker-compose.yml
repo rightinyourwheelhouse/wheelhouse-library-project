@@ -10,6 +10,7 @@ services:
     image: node:11
     volumes:
      - ./api:/usr/src/service
+     - /usr/src/service/node_modules
     working_dir: /usr/src/service
     command: bash -c "npm install && npm run watch"
     depends_on:
@@ -29,6 +30,7 @@ services:
     image: node:11
     volumes:
      - ./app:/usr/src/service
+     - /usr/src/service/node_modules
     working_dir: /usr/src/service
     command: bash -c "npm install && npm run start"
     depends_on:
@@ -37,3 +39,4 @@ services:
       - 1234:3000
     environment:
       - REACT_APP_API_BASE_URL=http://localhost:3000
+      - REACT_APP_SLACK_CALLBACK_URL=http://localhost:1234/login
