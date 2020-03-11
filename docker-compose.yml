@@ -37,6 +37,8 @@ services:
       - api
     ports:
       - 1234:3000
+      - 35729:35729
     environment:
       - REACT_APP_API_BASE_URL=http://localhost:3000
       - REACT_APP_SLACK_CALLBACK_URL=http://localhost:1234/login
+      - CHOKIDAR_USEPOLLING=true
